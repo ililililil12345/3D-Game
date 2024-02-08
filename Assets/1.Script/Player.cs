@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] private int speed;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,22 +16,18 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.W))
         {
-            transform.Translate(Vector3.forward * Time.deltaTime * 5f);
-            transform.rotation = Quaternion.Euler(0, -90, 0);
-        }
-        else if (Input.GetKey(KeyCode.S))
-        {
-            transform.Translate(Vector3.back * Time.deltaTime * 5f);
+            transform.rotation = Quaternion.Euler(0, 270, 0);
+            transform.Translate(Vector3.forward * Time.deltaTime * speed);
         }
         else if (Input.GetKey(KeyCode.A))
         {
-            transform.Translate(Vector3.left * Time.deltaTime * 5f);
-            transform.rotation = Quaternion.Euler(0, -180, 0);
+            transform.rotation = Quaternion.Euler(0, 180, 0);
+            transform.Translate(Vector3.forward * Time.deltaTime * speed);
         }
         else if (Input.GetKey(KeyCode.D))
         {
-            transform.Translate(Vector3.right * Time.deltaTime * 5f);
-            transform.rotation = Quaternion.Euler(0, 0, 0);
+            transform.rotation = Quaternion.Euler(0, 360, 0);
+            transform.Translate(Vector3.forward * Time.deltaTime * speed);
         }
     }
 }

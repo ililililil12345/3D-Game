@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Car : MonoBehaviour
+public class Car_1 : Car
 {
     // Start is called before the first frame update
     void Start()
@@ -13,10 +13,6 @@ public class Car : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.forward * Time.deltaTime * 10f);
-        if (transform.position.z >= 20)
-        {
-            Destroy(gameObject);
-        }
+        
     }
 }
