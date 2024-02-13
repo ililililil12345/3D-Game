@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class UI : MonoBehaviour
 {
-    [SerializeField] private GameManager gm;
+
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        GameManager.gameState = GameManager.GameState.Lobby;
     }
 
     // Update is called once per frame
@@ -16,8 +17,8 @@ public class UI : MonoBehaviour
     {
         
     }
-    void State_Game()
+    public void StartGame()
     {
-
+        GameManager.gameState = GameManager.GameState.Game;
     }
 }

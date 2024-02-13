@@ -17,7 +17,7 @@ public abstract class Car : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector3.forward * Time.deltaTime * speed);
-        if (transform.position.z >= 25 || transform.position.z <= -55)
+        if (transform.position.z >= 35 || transform.position.z <= -55)
         {
             Destroy(gameObject);
         }
@@ -26,7 +26,8 @@ public abstract class Car : MonoBehaviour
     {
         if (other.GetComponent<Player>())
         {
-            Destroy(other.gameObject);
+            other.gameObject.SetActive(false);
+            GameManager.gameState = GameManager.GameState.Dead;
         }
     }
 }
