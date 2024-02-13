@@ -7,12 +7,8 @@ public class Car_1 : Car
     // Start is called before the first frame update
     void Start()
     {
-        
+        speed = 10;
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
