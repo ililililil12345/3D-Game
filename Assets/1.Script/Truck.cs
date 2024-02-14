@@ -9,11 +9,4 @@ public class Truck : MonoBehaviour
     {
         transform.parent = cars.parent;
     }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.GetComponent<Player>())
-        {
-            other.gameObject.SetActive(false);
-        }
-    }
 }

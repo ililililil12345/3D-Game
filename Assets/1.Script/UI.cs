@@ -1,11 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class UI : MonoBehaviour
 {
-    [SerializeField] private GameObject deadTitle;
-    [SerializeField] private GameObject lobbyTitle;
 
     // Start is called before the first frame update
     void Start()
@@ -20,18 +18,6 @@ public class UI : MonoBehaviour
         {
             Invoke("OnDead", 4.5f);
         }
-        else
-        {
-            deadTitle.SetActive(false);
-        }
-        if (GameManager.gameState == GameManager.GameState.Lobby)
-        {
-            lobbyTitle.SetActive(true);
-        }
-        else
-        {
-            lobbyTitle.SetActive(false);
-        }
     }
     public void StartGame()
     {
@@ -39,10 +25,11 @@ public class UI : MonoBehaviour
     }
     public void OnDead()
     {
-        deadTitle.SetActive(true);
+        SceneManager.LoadScene("Dead");
     }
     public void OnLobby()
     {
+        SceneManager.LoadScene("Game");
         GameManager.gameState = GameManager.GameState.Lobby;
     }
 }

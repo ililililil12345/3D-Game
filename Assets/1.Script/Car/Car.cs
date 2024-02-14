@@ -17,17 +17,9 @@ public abstract class Car : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector3.forward * Time.deltaTime * speed);
-        if (transform.position.z >= 35 || transform.position.z <= -55)
+        if (transform.position.z >= 70 || transform.position.z <= -80)
         {
             Destroy(gameObject);
-        }
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.GetComponent<Player>())
-        {
-            other.gameObject.SetActive(false);
-            GameManager.gameState = GameManager.GameState.Dead;
         }
     }
 }
