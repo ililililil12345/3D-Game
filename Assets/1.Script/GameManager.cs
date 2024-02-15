@@ -10,5 +10,8 @@ public static class GameManager
         Game,
         Dead
     }
+
     public static GameState gameState;
+    public static float score;
+    public static int highestScore = 0;
 }

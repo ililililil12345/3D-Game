@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     [SerializeField] private GameObject truck;
+    [SerializeField] private Image deadBody;
     [SerializeField] private Animator[] playerAM;
+    [SerializeField] private SoundPlayer collisionalSound;
 
     [SerializeField] private int speed;
     [SerializeField] private float deadDelayTimer;
@@ -34,6 +36,12 @@ public class Player : MonoBehaviour
             playerAM[1].enabled = true;
             transform.Translate(Vector3.forward * Time.deltaTime * speed);
             deadDelayTimer = 2.5f;
+            //Á¡¼ö
+            GameManager.score += 0.0025f;
+            if (GameManager.score >= GameManager.highestScore)
+            {
+                GameManager.highestScore = (int)GameManager.score;
+            }
         }
         else if (Input.GetKey(KeyCode.A) && transform.position.z >= -9.5f)
         {
@@ -60,13 +68,18 @@ public class Player : MonoBehaviour
             GameManager.gameState = GameManager.GameState.Dead;
             truck.SetActive(true);
         }
+
+
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<Car>())
         {
-            transform.localScale = new Vector3(2, 0.45f, 1);
             GameManager.gameState = GameManager.GameState.Dead;
+            collisionalSound.gameObject.SetActive(true);
+            deadBody.gameObject.SetActive(true);
+            deadBody.transform.position = new Vector3(transform.position.x, transform.position.y + 0.1f, transform.position.z);
+            gameObject.SetActive(false);
         }
     }
 }
