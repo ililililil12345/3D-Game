@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Car : MonoBehaviour
+public class Car : MonoBehaviour
 {
     //[SerializeField] private Vector3 dic;
 
-    public float speed;
+    [SerializeField] private float speed;
     // Start is called before the first frame update
     void Start()
     {

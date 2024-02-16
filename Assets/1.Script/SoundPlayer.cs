@@ -10,7 +10,7 @@ public class SoundPlayer : MonoBehaviour
     void Start()
     {
         audioSource = gameObject.GetComponent<AudioSource>();
-        audioSource.PlayOneShot(audio_Chicken, 1);
+        audioSource.PlayOneShot(audio_Chicken, 0.01f);
     }
 
     // Update is called once per frame

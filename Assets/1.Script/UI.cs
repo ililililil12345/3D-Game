@@ -8,12 +8,17 @@ public class UI : MonoBehaviour
 {
     [SerializeField] private TMP_Text myScoreTxt;
 
+    public AudioClip audio_Chicken;
+    AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
         GameManager.gameState = GameManager.GameState.Lobby;
         myScoreTxt.gameObject.SetActive(false);
         GameManager.score = 0;
+
+        audioSource = gameObject.GetComponent<AudioSource>();
+        audioSource.PlayOneShot(audio_Chicken, 1);
     }
 
     // Update is called once per frame
