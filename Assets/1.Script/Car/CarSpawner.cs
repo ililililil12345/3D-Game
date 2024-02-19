@@ -21,7 +21,7 @@ public class CarSpawner : MonoBehaviour
         if (spawnTimer <= 0)
         {
             spawnTimer = Random.Range(1, 4);
-            Car c = Instantiate(car[0], transform);
+            Car c = Instantiate(car[Random.Range(0, car.Count)], transform);
             c.transform.parent = parent;
         }
     }

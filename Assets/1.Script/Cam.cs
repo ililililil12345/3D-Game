@@ -14,7 +14,7 @@ public class Cam : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.gameState == GameManager.GameState.Dead)
+        if (GameData.gameState == GameData.GameState.Dead)
         {
             return;
         }

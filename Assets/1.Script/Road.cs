@@ -11,7 +11,11 @@ public class Road : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        b = Instantiate(buildings[Random.Range(0, buildings.Count)], transform.position, Quaternion.identity);
+        if (buildingRoad)
+        {
+            b = Instantiate(buildings[Random.Range(0, buildings.Count)], transform.position, Quaternion.identity);
+        }
+        
     }
 
     // Update is called once per frame

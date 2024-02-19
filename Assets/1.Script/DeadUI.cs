@@ -12,8 +12,15 @@ public class DeadUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        scoreTxt.text = $"{(int)GameManager.score}";
-        highScoreTxt.text = $"최고점수 : {GameManager.highestScore}";
+        scoreTxt.text = $"{(int)GameData.score}";
+        if (PlayerPrefs.HasKey("highestScore"))
+        {
+            highScoreTxt.text = $"최고점수 : {PlayerPrefs.GetInt("highestScore")}";
+        }
+        else
+        {
+            Debug.LogError("세이브 파일 없음");
+        }
         loading.gameObject.SetActive(false);
     }
 
@@ -26,6 +33,6 @@ public class DeadUI : MonoBehaviour
     {
         loading.gameObject.SetActive(true);
         SceneManager.LoadScene("Game");
-        GameManager.gameState = GameManager.GameState.Lobby;
+        GameData.gameState = GameData.GameState.Lobby;
     }
 }

@@ -2,16 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class GameManager
+public class GameManager : MonoBehaviour
 {
-    public enum GameState
+    // Start is called before the first frame update
+    void Start()
     {
-        Lobby,
-        Game,
-        Dead
+        if (!PlayerPrefs.HasKey("highestScore"))
+        {
+            PlayerPrefs.SetInt("highestScore", 0);
+        }
+
+        //개발용 빌드시 꼭 삭제
+        PlayerPrefs.SetInt("highestScore", 0);
     }
 
-    public static GameState gameState;
-    public static float score;
-    public static int highestScore = 0;
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
 }
