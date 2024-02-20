@@ -9,6 +9,7 @@ public class DeadUI : MonoBehaviour
     [SerializeField] private TMP_Text scoreTxt;
     [SerializeField] private TMP_Text highScoreTxt;
     [SerializeField] private TMP_Text loading;
+    [SerializeField] private AudioSource deadSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +23,14 @@ public class DeadUI : MonoBehaviour
             Debug.LogError("세이브 파일 없음");
         }
         loading.gameObject.SetActive(false);
+        if (PlayerPrefs.GetInt("BGSTgl") == 0)
+        {
+            deadSound.GetComponent<AudioSource>().enabled = false;
+        }
+        if (PlayerPrefs.GetInt("BGSTgl") == 1)
+        {
+            deadSound.GetComponent<AudioSource>().enabled = true;
+        }
     }
 
     // Update is called once per frame

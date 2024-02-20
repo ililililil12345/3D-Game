@@ -58,6 +58,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D) || GameData.gameState != GameData.GameState.Game)
         {
             playerAM[1].enabled = false;
+            transform.position = new Vector3(transform.position.x, 0, transform.position.z);
         }
 
         //제한시간
@@ -76,7 +77,10 @@ public class Player : MonoBehaviour
         if (other.GetComponent<Car>())
         {
             GameData.gameState = GameData.GameState.Dead;
-            collisionalSound.gameObject.SetActive(true);
+            if (PlayerPrefs.GetInt("CSTgl") == 1)
+            {
+                collisionalSound.gameObject.SetActive(true);
+            }
             deadBody.gameObject.SetActive(true);
             deadBody.transform.position = new Vector3(transform.position.x, transform.position.y + 0.1f, transform.position.z);
             gameObject.SetActive(false);

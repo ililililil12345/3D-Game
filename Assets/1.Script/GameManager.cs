@@ -11,14 +11,22 @@ public class GameManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("highestScore", 0);
         }
+        if (!PlayerPrefs.HasKey("BGSTgl"))
+        {
+            PlayerPrefs.SetInt("BGSTgl", 1);
+        }
+        if (!PlayerPrefs.HasKey("CSTgl"))
+        {
+            PlayerPrefs.SetInt("CSTgl", 1);
+        }
 
         //개발용 빌드시 꼭 삭제
-        PlayerPrefs.SetInt("highestScore", 0);
+        //PlayerPrefs.SetInt("highestScore", 0);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
