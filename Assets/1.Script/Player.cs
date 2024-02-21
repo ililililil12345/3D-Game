@@ -37,7 +37,7 @@ public class Player : MonoBehaviour
             transform.Translate(Vector3.forward * Time.deltaTime * speed);
             deadDelayTimer = 2.5f;
             //Á¡¼ö
-            GameData.score += 0.0025f;
+            GameData.score += 0.025f;
             if (GameData.score >= GameData.highestScore)
             {
                 PlayerPrefs.SetInt("highestScore", (int)GameData.score);

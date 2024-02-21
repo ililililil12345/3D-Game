@@ -31,12 +31,13 @@ public class DeadUI : MonoBehaviour
         {
             deadSound.GetComponent<AudioSource>().enabled = true;
         }
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        Screen.SetResolution(460, 850, false);
     }
     public void OnLobby()
     {

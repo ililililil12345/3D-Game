@@ -12,6 +12,7 @@ public class UI : MonoBehaviour
     [SerializeField] private AudioSource BG;
     [SerializeField] private Toggle BGSTgl;
     [SerializeField] private Toggle CSTgl;
+    [SerializeField] private GameObject lobby;
 
 
     // Start is called before the first frame update
@@ -49,6 +50,14 @@ public class UI : MonoBehaviour
         if (GameData.gameState == GameData.GameState.Dead)
         {
             Invoke("OnDead", 4.5f);
+        }
+        if (GameData.gameState == GameData.GameState.Lobby)
+        {
+            lobby.SetActive(true);
+        }
+        else
+        {
+            lobby.SetActive(false);
         }
         myScoreTxt.text = $"{(int)GameData.score}";
         highScoreTxt.text = $"최고점수 : {PlayerPrefs.GetInt("highestScore")}";
