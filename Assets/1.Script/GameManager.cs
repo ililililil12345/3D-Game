@@ -21,13 +21,13 @@ public class GameManager : MonoBehaviour
         }
 
         //개발용 빌드시 꼭 삭제
-        //PlayerPrefs.SetInt("highestScore", 0);
-
+        PlayerPrefs.SetInt("highestScore", 0);
+        Screen.SetResolution(720 / 2, 1280 / 2, false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        Screen.SetResolution(460, 850, false);
+        
     }
 }

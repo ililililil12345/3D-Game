@@ -37,7 +37,7 @@ public class DeadUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Screen.SetResolution(460, 850, false);
+        //Screen.SetResolution(460, 850, false);
     }
     public void OnLobby()
     {
