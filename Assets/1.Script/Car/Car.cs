@@ -19,7 +19,8 @@ public class Car : MonoBehaviour
         transform.Translate(Vector3.forward * Time.deltaTime * speed);
         if (transform.position.z >= 70 || transform.position.z <= -80)
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            Pool.Instance.InPool(gameObject);
         }
     }
 }

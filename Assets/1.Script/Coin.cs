@@ -13,14 +13,19 @@ public class Coin : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (transform.position.y <= -3)
+        {
+            Pool.Instance.InPool(gameObject);
+            //Destroy(gameObject);
+        }
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<Player>())
         {
             GameData.score += 1.5f;
-            Destroy(gameObject);
+            Pool.Instance.InPool(gameObject);
+            //Destroy(gameObject);
         }
     }
 }

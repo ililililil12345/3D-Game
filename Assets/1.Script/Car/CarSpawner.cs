@@ -20,9 +20,21 @@ public class CarSpawner : MonoBehaviour
         spawnTimer -= Time.deltaTime;
         if (spawnTimer <= 0)
         {
-            spawnTimer = Random.Range(1, 5);
-            Car c = Instantiate(car[Random.Range(0, car.Count)], transform);
-            c.transform.parent = parent;
+            if (Pool.Instance.coinPool.Count == 0)
+            {
+                spawnTimer = Random.Range(1, 5);
+                Car c = Instantiate(car[Random.Range(0, car.Count)], transform);
+                c.transform.parent = parent;
+            }
+            else
+            {
+                spawnTimer = Random.Range(1, 5);
+                GameObject c = Pool.Instance.carPool[Pool.Instance.carPool.Count - 1];
+                Pool.Instance.carPool.Remove(c);
+                c.transform.parent = parent;
+                c.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+                c.SetActive(true);
+            }
         }
     }
 }
