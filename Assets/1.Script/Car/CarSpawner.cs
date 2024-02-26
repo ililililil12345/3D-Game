@@ -8,6 +8,7 @@ public class CarSpawner : MonoBehaviour
     [SerializeField] private Transform parent;
 
     private float spawnTimer = 0;
+    [SerializeField] private bool LR;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +21,7 @@ public class CarSpawner : MonoBehaviour
         spawnTimer -= Time.deltaTime;
         if (spawnTimer <= 0)
         {
-            if (Pool.Instance.coinPool.Count == 0)
+            if (Pool.Instance.leftCarPool.Count == 0 || Pool.Instance.rightCarPool.Count == 0)
             {
                 spawnTimer = Random.Range(1, 5);
                 Car c = Instantiate(car[Random.Range(0, car.Count)], transform);
@@ -29,11 +30,22 @@ public class CarSpawner : MonoBehaviour
             else
             {
                 spawnTimer = Random.Range(1, 5);
-                GameObject c = Pool.Instance.carPool[Pool.Instance.carPool.Count - 1];
-                Pool.Instance.carPool.Remove(c);
-                c.transform.parent = parent;
-                c.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-                c.SetActive(true);
+                if (!LR)
+                {
+                    GameObject c = Pool.Instance.leftCarPool[Pool.Instance.leftCarPool.Count - 1];
+                    Pool.Instance.leftCarPool.Remove(c);
+                    c.transform.parent = parent;
+                    c.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+                    c.SetActive(true);
+                }
+                else
+                {
+                    GameObject c = Pool.Instance.rightCarPool[Pool.Instance.rightCarPool.Count - 1];
+                    Pool.Instance.rightCarPool.Remove(c);
+                    c.transform.parent = parent;
+                    c.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+                    c.SetActive(true);
+                }
             }
         }
     }

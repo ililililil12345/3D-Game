@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     [SerializeField] private GameObject truck;
+    [SerializeField] private Transform AM;
     [SerializeField] private Image deadBody;
     [SerializeField] private Animator[] playerAM;
     [SerializeField] private SoundPlayer collisionalSound;
@@ -25,6 +26,7 @@ public class Player : MonoBehaviour
             if (GameData.gameState == GameData.GameState.Dead)
             {
                 playerAM[0].enabled = false;
+                playerAM[1].enabled = false;
             }
             return;
         }
@@ -35,7 +37,7 @@ public class Player : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 270, 0);
             playerAM[1].enabled = true;
             transform.Translate(Vector3.forward * Time.deltaTime * speed);
-            deadDelayTimer = 2.5f;
+            deadDelayTimer = 5f;
             //점수
             GameData.score += 0.025f;
             if (GameData.score >= GameData.highestScore)
@@ -58,7 +60,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D) || GameData.gameState != GameData.GameState.Game)
         {
             playerAM[1].enabled = false;
-            transform.position = new Vector3(transform.position.x, 0, transform.position.z);
+            AM.position = new Vector3(transform.position.x, 0, transform.position.z);
         }
 
         //제한시간

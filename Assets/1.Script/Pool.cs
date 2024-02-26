@@ -5,7 +5,8 @@ using UnityEngine;
 public class Pool : Singleton<Pool>
 {
     public List<GameObject> coinPool = new List<GameObject>();
-    public List<GameObject> carPool = new List<GameObject>();
+    public List<GameObject> rightCarPool = new List<GameObject>();
+    public List<GameObject> leftCarPool = new List<GameObject>();
 
     public void InPool(GameObject obj)
     {
@@ -15,7 +16,14 @@ public class Pool : Singleton<Pool>
         }
         else if (obj.GetComponent<Car>())
         {
-            carPool.Add(obj);
+            if (obj.transform.rotation.y == 0)
+            {
+                rightCarPool.Add(obj);
+            }
+            else if (obj.transform.rotation.y == 180)
+            {
+                leftCarPool.Add(obj);
+            }
         }
         obj.transform.parent = transform.parent;
         obj.SetActive(false);
