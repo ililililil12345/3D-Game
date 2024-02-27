@@ -4,14 +4,18 @@ using UnityEngine;
 using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
-    [SerializeField] private GameObject truck;
-    [SerializeField] private Transform AM;
+    [SerializeField] private GameObject[] truck;
+    [SerializeField] protected Transform AM;
     [SerializeField] private Image deadBody;
-    [SerializeField] private Animator[] playerAM;
+    [SerializeField] protected Animator[] playerAM;
     [SerializeField] private SoundPlayer collisionalSound;
 
-    [SerializeField] private int speed;
-    [SerializeField] private float deadDelayTimer;
+    [SerializeField] protected int speed;
+    [SerializeField] protected float deadDelayTimer;
+    private bool forwar;
+    private bool right;
+    private bool left;
+    private bool stop;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,9 +34,9 @@ public class Player : MonoBehaviour
             }
             return;
         }
-        
+
         //이동
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W) || forwar)
         {
             transform.rotation = Quaternion.Euler(0, 270, 0);
             playerAM[1].enabled = true;
@@ -45,23 +49,26 @@ public class Player : MonoBehaviour
                 PlayerPrefs.SetInt("highestScore", (int)GameData.score);
             }
         }
-        else if (Input.GetKey(KeyCode.A) && transform.position.z >= -9.5f)
+        else if (Input.GetKey(KeyCode.A) || left && transform.position.z >= -9.5f)
         {
             transform.rotation = Quaternion.Euler(0, 180, 0);
             playerAM[1].enabled = true;
             transform.Translate(Vector3.forward * Time.deltaTime * speed);
         }
-        else if (Input.GetKey(KeyCode.D) && transform.position.z <= 9.5f)
+        else if (Input.GetKey(KeyCode.D) || right && transform.position.z <= 9.5f)
         {
             transform.rotation = Quaternion.Euler(0, 360, 0);
             playerAM[1].enabled = true;
             transform.Translate(Vector3.forward * Time.deltaTime * speed);
         }
-        if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D) || GameData.gameState != GameData.GameState.Game)
+        if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D) || GameData.gameState != GameData.GameState.Game || stop)
         {
             playerAM[1].enabled = false;
             AM.position = new Vector3(transform.position.x, 0, transform.position.z);
         }
+
+
+        
 
         //제한시간
         deadDelayTimer -= Time.deltaTime;
@@ -69,10 +76,31 @@ public class Player : MonoBehaviour
         {
             //gameObject.SetActive(false);
             GameData.gameState = GameData.GameState.Dead;
-            truck.SetActive(true);
+            int r = Random.Range(0, truck.Length);
+            truck[r].SetActive(true);
         }
-
-
+    }
+    public void ForwardButtonDown()
+    {
+        forwar = true;
+        stop = false;
+    }
+    public void RightButtonDown()
+    {
+        right = true;
+        stop = false;
+    }
+    public void LeftButtonDown()
+    {
+        left = true;
+        stop = false;
+    }
+    public void ButtonUp()
+    {
+        stop = true;
+        forwar = false;
+        right = false;
+        left = false;
     }
     private void OnTriggerEnter(Collider other)
     {
