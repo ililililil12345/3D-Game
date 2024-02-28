@@ -6,7 +6,6 @@ public class Car : MonoBehaviour
 {
     //[SerializeField] private Vector3 dic;
 
-    [SerializeField] private float speed;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +15,7 @@ public class Car : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.forward * Time.deltaTime * speed);
+        transform.Translate(Vector3.forward * Time.deltaTime * GameData.carSpeed);
         if (transform.position.z >= 70 || transform.position.z <= -80)
         {
             //Destroy(gameObject);

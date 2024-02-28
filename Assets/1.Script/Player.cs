@@ -44,6 +44,7 @@ public class Player : MonoBehaviour
             deadDelayTimer = 5f;
             //Á¡¼ö
             GameData.score += 0.025f;
+            GameData.carSpeedUpTimer += Time.deltaTime;
             if (GameData.score >= GameData.highestScore)
             {
                 PlayerPrefs.SetInt("highestScore", (int)GameData.score);
