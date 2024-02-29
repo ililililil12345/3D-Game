@@ -18249,8 +18249,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p: {fileID: 1075587951}
   buildings:
-  - {fileID: 3164220659510458021, guid: cbd3c1d248f114a488bcd8aac8e8b654, type: 3}
-  - {fileID: 8127381843029988327, guid: 04737c0841540c44286425590efc8c15, type: 3}
+  - {fileID: 2375657892025166712, guid: dbded64c6cf6f79409de886c7b7fbfdc, type: 3}
+  - {fileID: 2375657892025166712, guid: dbded64c6cf6f79409de886c7b7fbfdc, type: 3}
   - {fileID: 2375657892025166712, guid: dbded64c6cf6f79409de886c7b7fbfdc, type: 3}
   buildingRoad: 1
   coin: {fileID: 4479830498103203863, guid: c17eaf1c6e5fc3a48943635d1c3d82d3, type: 3}

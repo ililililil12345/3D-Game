@@ -105,7 +105,7 @@ public class Player : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<Car>())
+        if (other.GetComponent<Car>() || other.GetComponent<Train>())
         {
             GameData.gameState = GameData.GameState.Dead;
             if (PlayerPrefs.GetInt("CSTgl") == 1)

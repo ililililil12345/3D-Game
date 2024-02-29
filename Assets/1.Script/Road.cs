@@ -23,7 +23,7 @@ public class Road : MonoBehaviour
         for (int i = 0; i < coinNum; i++)
         {
             Coin c = Instantiate(coin, transform.position, Quaternion.identity);
-            c.transform.position = new Vector3(transform.position.x + Random.Range(0, 9), 0.1f, transform.position.z + Random.Range(0, 9));
+            c.transform.position = new Vector3(transform.position.x + Random.Range(0, 9), 0.01f, transform.position.z + Random.Range(0, 9));
         }
 
     }
