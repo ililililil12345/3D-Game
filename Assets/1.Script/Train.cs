@@ -5,7 +5,6 @@ using UnityEngine;
 public class Train : MonoBehaviour
 {
     [SerializeField] private GameObject track;
-    [SerializeField] private AudioSource trainSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,11 +14,10 @@ public class Train : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.back * Time.deltaTime * 80);
+        transform.Translate(Vector3.forward * Time.deltaTime * 80);
         if (transform.position.z <= -500)
         {
             transform.position = new Vector3(track.transform.position.x + 0.65f, track.transform.position.y, track.transform.position.z + 99.2f);
-            trainSound.Play();
         }
     }
 }

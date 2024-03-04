@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class Player : MonoBehaviour
+public class Player : Singleton<Player>
 {
     [SerializeField] private GameObject[] truck;
     [SerializeField] protected Transform AM;
