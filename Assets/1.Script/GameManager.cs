@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
         }
 
         //개발용 빌드시 꼭 삭제
-        PlayerPrefs.SetInt("highestScore", 0);
+        //PlayerPrefs.SetInt("highestScore", 0);
 
         Screen.SetResolution(720 / 2, 1280 / 2, false);
 
